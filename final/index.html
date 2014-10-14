@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/libs/knockout-3.2.0.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Entrada de datos del producto</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" >Nombre</label>
+                        <input type="text" data-bind="value:producto.nombre" class="form-control text-right"  />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" >Código</label>
+                        <select name="codigoProducto" id="codigoProducto"
+                                data-bind="options:codigosProducto,
+                                optionsText:'nombre',
+                                optionsValue:'codigo',
+                                optionsCaption:'Seleccionar código',
+                                value:producto.codigo" class="form-control">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" >Precio</label>
+                        <input type="text" class="form-control text-right"  data-bind="value:producto.precio" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" >Cantidad</label>
+                        <input type="text" class="form-control text-right" data-bind="value:producto.cantidad" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-4">
+                    <div class="form-group">
+                        <button type="btn btn-primary" data-bind="click:agregarProducto">
+                            <span class="glyphicon glyphicon-plus"></span> Agregar producto
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Productos</h3></div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Código</th>
+                        <th>Precio</th>
+                        <th>Producto</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:productos">
+                    <tr>
+                        <td data-bind="text: nombre"></td>
+                        <td data-bind="text: codigo"></td>
+                        <td class="text-right" data-bind="text: precio"></td>
+                        <td class="text-right" data-bind="text: cantidad"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/apps/orfisApp.js"></script>
+<script type="text/javascript" src="js/modelos/producto.js"></script>
+<script type="text/javascript" src="js/viewmodels/vmarregloproductos.js"></script>
+</body>
+</html>
